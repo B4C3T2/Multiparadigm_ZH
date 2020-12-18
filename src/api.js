@@ -1,7 +1,7 @@
 
 const _HunspellCheck = (characters) =>{
     const fs= require('jest-serializer');
-    const Hunspell = require('hunspell-spellchecker')
+    const Hunspell = require('hunspell-spellchecker');
     const AllAnagrams = _GenerateAllAnagrams(characters);
     const HunspellChecker = new Hunspell();
 
@@ -12,15 +12,17 @@ const _HunspellCheck = (characters) =>{
 
     HunspellChecker.use(Dictionary);
 
-    const result = {};
-    let i = 0;
-    for (const anagram in AllAnagrams){
-        if(HunspellChecker.check(anagram)){
-            result[i]=anagram;
-            i++;
-        }
-    }
-    return result;
+    //const result = {};
+    //let i = 0;
+    //for (const anagram in AllAnagrams){
+    //    if(HunspellChecker.check(anagram)){
+    //        result[i]=anagram;
+    //        i++;
+    //    }
+    //}
+    //return result;
+
+    return AllAnagrams.filter(anagram => HunspellChecker.check(anagram));
 }
 
 function _GenerateAllAnagrams(characters){
