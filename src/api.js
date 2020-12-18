@@ -20,6 +20,7 @@ const _HunspellCheck = (characters) =>{
             i++;
         }
     }
+    return result;
 }
 
 function _GenerateAllAnagrams(characters){
